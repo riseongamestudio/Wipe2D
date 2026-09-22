@@ -10,7 +10,7 @@ namespace RiseOn.Wipe2D {
     /// masked one, and converts the wiper's world-space strokes into sprite pixels. Concrete targets<br/>
     /// only say where their sprite is and how to reach their renderer.
     /// </summary>
-    public abstract class WipeTarget : MonoBehaviourExt, IWipeTarget {
+    public abstract class WipeTarget : MonoBehaviour, IWipeTarget {
         private static readonly int maskTexId = Shader.PropertyToID("_MaskTex");
         private static readonly int maskStId = Shader.PropertyToID("_MaskST");
 

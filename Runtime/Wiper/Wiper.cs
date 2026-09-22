@@ -9,7 +9,7 @@ namespace RiseOn.Wipe2D {
     /// point to the next. No hit test: a stroke that misses a target is culled by that target for free,<br/>
     /// so targets need no collider and the wiper needs no raycast.
     /// </summary>
-    public class Wiper : MonoBehaviourExt, IWiper {
+    public class Wiper : MonoBehaviour, IWiper {
         [SerializeField]
         private WipeMode mode;
 
@@ -50,13 +50,13 @@ namespace RiseOn.Wipe2D {
         [Button]
         protected virtual void SetupEditor() {
             if (provider == null) {
-                RecordForUndo(this);
+                UndoUtils.RecordForUndo(this);
 
                 if (null == (provider = new(GetComponent<IWipeTargetProvider>()))) {
                     provider = new(gameObject.AddComponentUndo<WipeTargetProviderRef>());
                 }
 
-                MarkDirty(this);
+                UndoUtils.MarkDirty(this);
             }
         }
     }

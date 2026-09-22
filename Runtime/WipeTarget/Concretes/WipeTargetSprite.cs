@@ -23,7 +23,7 @@ namespace RiseOn.Wipe2D {
         protected override Sprite Sprite => target.sprite;
 
         protected override Vector2 WorldToPixel(Vector2 world) {
-            Vector2 local = TF.InverseTransformPoint(world);
+            Vector2 local = transform.InverseTransformPoint(world);
 
             if (target.flipX) local.x = -local.x;
             if (target.flipY) local.y = -local.y;
@@ -32,7 +32,7 @@ namespace RiseOn.Wipe2D {
         }
 
         protected override float WorldToPixelRadius(float worldRadius) {
-            return worldRadius / Mathf.Abs(TF.lossyScale.x) * Sprite.pixelsPerUnit;
+            return worldRadius / Mathf.Abs(transform.lossyScale.x) * Sprite.pixelsPerUnit;
         }
 
         protected override Vector2 PixelToWorld(Vector2 pixel) {
@@ -41,7 +41,7 @@ namespace RiseOn.Wipe2D {
             if (target.flipX) local.x = -local.x;
             if (target.flipY) local.y = -local.y;
 
-            return TF.TransformPoint(local);
+            return transform.TransformPoint(local);
         }
 
         protected override bool TryGetClip(out Sprite sprite, out float cutoff, out bool inside) {
@@ -113,13 +113,13 @@ namespace RiseOn.Wipe2D {
             base.SetupEditor();
 
             if (target == null) {
-                RecordForUndo(this);
+                UndoUtils.RecordForUndo(this);
 
                 if (null == (target = GetComponent<SpriteRenderer>())) {
                     target = gameObject.AddComponentUndo<SpriteRenderer>();
                 }
 
-                MarkDirty(this);
+                UndoUtils.MarkDirty(this);
             }
         }
     }

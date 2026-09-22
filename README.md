@@ -23,7 +23,7 @@ Package `com.riseon.wipe2d`, namespace `RiseOn.Wipe2D`.
 | Phụ thuộc | Cách có | Dùng cho |
 |---|---|---|
 | Unity 6000.3 | | Bản đang dùng để phát triển |
-| [`com.riseon.utils`](https://github.com/riseongamestudio/Utils/tree/main/Core#readme) 1.0.0 | Tự cài theo `package.json` | Lớp nền, Undo |
+| [`com.riseon.utils`](https://github.com/riseongamestudio/Utils/tree/main/Core#readme) 1.0.0 | Tự cài theo `package.json` | Undo, extension |
 | [`com.riseon.serializables`](https://github.com/riseongamestudio/Serializables#readme) 1.0.0 | Tự cài theo `package.json` | Tham chiếu target qua interface |
 | `com.unity.ugui` 2.0.0 | Tự cài theo `package.json` | `WipeTargetImage`, `WiperDrag` trong canvas |
 | `com.unity.render-pipelines.universal` 17.3.0 | Tự cài theo `package.json` | Shader của `WipeTargetSprite` (URP 2D) |

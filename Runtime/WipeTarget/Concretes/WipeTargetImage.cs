@@ -15,6 +15,8 @@ namespace RiseOn.Wipe2D {
         [SerializeField, Required]
         private Image target;
 
+        private RectTransform RectTF => (RectTransform)transform;
+
         // The Mask hiding part of this Image. uGUI always keeps the inside, and cuts wherever the mask
         // graphic's alpha drops under the threshold above.
         [SerializeField]
@@ -79,13 +81,13 @@ namespace RiseOn.Wipe2D {
             base.SetupEditor();
 
             if (target == null) {
-                RecordForUndo(this);
+                UndoUtils.RecordForUndo(this);
 
                 if (null == (target = GetComponent<Image>())) {
                     target = gameObject.AddComponentUndo<Image>();
                 }
 
-                MarkDirty(this);
+                UndoUtils.MarkDirty(this);
             }
         }
     }

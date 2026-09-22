@@ -12,7 +12,7 @@ namespace RiseOn.Wipe2D {
     /// Single pointer: the finger that pressed first owns the drag until it lifts.
     /// </summary>
     public class WiperDrag
-        : MonoBehaviourExt
+        : MonoBehaviour
         , IPointerDownHandler
         , IPointerUpHandler
         , IBeginDragHandler
@@ -43,14 +43,14 @@ namespace RiseOn.Wipe2D {
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData) {
             if (!IsCurPointer(eventData)) return;
 
-            dragPointerOffset = (Vector2)TF.position - PointerToWorld(eventData);
+            dragPointerOffset = (Vector2)transform.position - PointerToWorld(eventData);
         }
 
         void IDragHandler.OnDrag(PointerEventData eventData) {
             if (!IsCurPointer(eventData)) return;
 
             var newWorldPos = PointerToWorld(eventData) + dragPointerOffset;
-            TF.SetPositionXY(newWorldPos);
+            transform.SetPositionXY(newWorldPos);
             wiper.Value.Move(newWorldPos);
         }
 
@@ -65,7 +65,7 @@ namespace RiseOn.Wipe2D {
         }
 
         protected virtual Vector2 PointerToWorld(PointerEventData eventData) {
-            if (TF is RectTransform rectTF) {
+            if (transform is RectTransform rectTF) {
                 var space = rectTF.parent as RectTransform;
 
                 RectTransformUtility.ScreenPointToWorldPointInRectangle(space != null ? space : rectTF, eventData.position, eventData.pressEventCamera, out var world);
@@ -83,13 +83,13 @@ namespace RiseOn.Wipe2D {
         [Button]
         protected virtual void SetupEditor() {
             if (wiper == null) {
-                RecordForUndo(this);
+                UndoUtils.RecordForUndo(this);
 
                 if (null == (wiper = new(GetComponent<IWiper>()))) {
                     wiper = new(gameObject.AddComponentUndo<Wiper>());
                 }
 
-                MarkDirty(this);
+                UndoUtils.MarkDirty(this);
             }
         }
     }
