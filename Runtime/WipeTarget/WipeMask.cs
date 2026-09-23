@@ -219,7 +219,7 @@ namespace RiseOn.Wipe2D {
 
             dirty = true;
 
-            // Unit quad -> centred -> capsule box in texels, rotated onto the segment -> mask UV.
+            // Unit quad -> centered -> capsule box in texels, rotated onto the segment -> mask UV.
             static Matrix4x4 CapsuleMatrix(Matrix4x4 texelToUV, Vector2 a, Vector2 b, float r) {
                 var delta = b - a;
                 var len = delta.magnitude;

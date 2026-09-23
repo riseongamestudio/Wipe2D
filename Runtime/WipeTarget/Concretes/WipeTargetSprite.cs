@@ -113,13 +113,13 @@ namespace RiseOn.Wipe2D {
             base.SetupEditor();
 
             if (target == null) {
-                UndoUtils.RecordForUndo(this);
+                this.RecordForUndo();
 
                 if (null == (target = GetComponent<SpriteRenderer>())) {
                     target = gameObject.AddComponentUndo<SpriteRenderer>();
                 }
 
-                UndoUtils.MarkDirty(this);
+                this.MarkDirty();
             }
         }
     }

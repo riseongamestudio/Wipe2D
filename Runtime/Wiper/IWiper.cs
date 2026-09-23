@@ -6,7 +6,7 @@ namespace RiseOn.Wipe2D {
     /// only needs to say where the brush is and when it lifts.
     /// </summary>
     public interface IWiper {
-        /// <summary>Brush centre moved here; call every frame while the brush is down.</summary>
+        /// <summary>Brush center moved here; call every frame while the brush is down.</summary>
         void Move(Vector2 world);
 
         /// <summary>Brush lifted; the next Move starts a new stroke instead of joining this one.</summary>

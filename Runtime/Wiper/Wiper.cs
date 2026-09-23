@@ -50,13 +50,13 @@ namespace RiseOn.Wipe2D {
         [Button]
         protected virtual void SetupEditor() {
             if (provider == null) {
-                UndoUtils.RecordForUndo(this);
+                this.RecordForUndo();
 
                 if (null == (provider = new(GetComponent<IWipeTargetProvider>()))) {
                     provider = new(gameObject.AddComponentUndo<WipeTargetProviderRef>());
                 }
 
-                UndoUtils.MarkDirty(this);
+                this.MarkDirty();
             }
         }
     }

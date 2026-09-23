@@ -28,10 +28,9 @@ Package `com.riseon.wipe2d`, namespace `RiseOn.Wipe2D`.
 | `com.unity.ugui` 2.0.0 | Tự cài theo `package.json` | `WipeTargetImage`, `WiperDrag` trong canvas |
 | `com.unity.render-pipelines.universal` 17.3.0 | Tự cài theo `package.json` | Shader của `WipeTargetSprite` (URP 2D) |
 | [Odin Inspector](https://odininspector.com) | Cài tay từ Asset Store | Inspector của các component |
-| [DOTween](https://dotween.demigiant.com) | Cài tay từ Asset Store | `com.riseon.utils` cần |
 
 "Tự cài" là khi cài qua OpenUPM; cài bằng git URL thì phải cài các package RiseOn
-kia trước. Odin và DOTween không có trên UPM nên phải cài vào project trước.
+kia trước. Odin không có trên UPM nên phải cài vào project trước.
 
 ## Cài đặt
 

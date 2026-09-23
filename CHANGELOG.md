@@ -4,7 +4,7 @@ Mọi thay đổi đáng kể của `com.riseon.wipe2d` được ghi ở đây. 
 [Keep a Changelog](https://keepachangelog.com/vi/1.1.0/), đánh số theo
 [Semantic Versioning](https://semver.org/lang/vi/).
 
-## [1.0.0] - Chưa phát hành
+## [1.0.0] - 2026-09-23
 
 ### Thêm
 
