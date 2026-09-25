@@ -31,6 +31,7 @@ Package `com.riseon.wipe2d`, namespace `RiseOn.Wipe2D`.
 
 "Tự cài" là khi cài qua OpenUPM; cài bằng git URL thì phải cài các package RiseOn
 kia trước. Odin không có trên UPM nên phải cài vào project trước.
+Thiếu Odin thì project báo một lỗi từ `RiseOn.Wipe2D.Requirements`.
 
 ## Cài đặt
 
@@ -47,7 +48,7 @@ kia trước. Odin không có trên UPM nên phải cài vào project trước.
     }
   ],
   "dependencies": {
-    "com.riseon.wipe2d": "1.0.1"
+    "com.riseon.wipe2d": "1.0.2"
   }
 }
 ```
@@ -56,7 +57,7 @@ kia trước. Odin không có trên UPM nên phải cài vào project trước.
 *Package Manager → + → Add package from git URL*:
 
 ```
-https://github.com/riseongamestudio/Wipe2D.git#v1.0.1
+https://github.com/riseongamestudio/Wipe2D.git#v1.0.2
 ```
 
 **Thư mục local**: `"com.riseon.wipe2d": "file:D:/path/to/Wipe2D"`.

@@ -1,0 +1,16 @@
+{
+    "name": "RiseOn.Wipe2D.Requirements",
+    "rootNamespace": "RiseOn.Wipe2D.Requirements",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}
