@@ -4,6 +4,12 @@ Mọi thay đổi đáng kể của `com.riseon.wipe2d` được ghi ở đây. 
 [Keep a Changelog](https://keepachangelog.com/vi/1.1.0/), đánh số theo
 [Semantic Versioning](https://semver.org/lang/vi/).
 
+## [1.1.0] - 2026-10-29
+
+### Thêm
+
+- `IWiper.Radius`: bán kính cọ theo world, để hiệu ứng đi theo cọ khớp vùng cọ phủ.
+
 ## [1.0.2] - 2026-09-25
 
 ### Sửa

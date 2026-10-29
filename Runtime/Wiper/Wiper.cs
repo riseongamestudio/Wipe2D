@@ -25,6 +25,8 @@ namespace RiseOn.Wipe2D {
         private Vector2 lastWorld;
         private bool hasLast;
 
+        public float Radius => radius;
+
         public virtual void Move(Vector2 world) {
             // The first point of a stroke has nowhere to come from, so it strokes onto itself: a single dab.
             var from = hasLast ? lastWorld : world;

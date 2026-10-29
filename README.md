@@ -48,7 +48,7 @@ Thiếu Odin thì project báo một lỗi từ `RiseOn.Wipe2D.Requirements`.
     }
   ],
   "dependencies": {
-    "com.riseon.wipe2d": "1.0.2"
+    "com.riseon.wipe2d": "1.1.0"
   }
 }
 ```
@@ -57,7 +57,7 @@ Thiếu Odin thì project báo một lỗi từ `RiseOn.Wipe2D.Requirements`.
 *Package Manager → + → Add package from git URL*:
 
 ```
-https://github.com/riseongamestudio/Wipe2D.git#v1.0.2
+https://github.com/riseongamestudio/Wipe2D.git#v1.1.0
 ```
 
 **Thư mục local**: `"com.riseon.wipe2d": "file:D:/path/to/Wipe2D"`.
@@ -72,8 +72,8 @@ https://github.com/riseongamestudio/Wipe2D.git#v1.0.2
 
 Code bên ngoài chỉ chạm ba interface: `IWipeTarget` (`Progress`,
 `OnProgressChanged`, `OnProgressThresholdReached`, `Stroke`), `IWiper`
-(`Move(world)`, `EndMove()`), và `IWipeTargetProvider` khi cần cách chọn target
-khác. Mọi thứ còn lại là `internal`.
+(`Move(world)`, `EndMove()`, `Radius`), và `IWipeTargetProvider` khi cần cách chọn
+target khác. Mọi thứ còn lại là `internal`.
 
 ## Hướng dẫn nhanh
 

@@ -11,5 +11,8 @@ namespace RiseOn.Wipe2D {
 
         /// <summary>Brush lifted; the next Move starts a new stroke instead of joining this one.</summary>
         void EndMove();
+
+        /// <summary>World distance from the brush path to the outer edge of what a stroke covers.</summary>
+        float Radius { get; }
     }
 }

@@ -14,6 +14,8 @@ Phía cây cọ.
 - Đặt `Wiper` và một provider trên một GameObject riêng làm vật cầm cọ.
 - Tự điều khiển cọ từ code: gọi `Move(world)` mỗi frame trong lúc kéo, `EndMove()`
   khi nhấc cọ. Giữa hai lần `Move`, cọ đi thành một đoạn liền, không đứt nét.
+- Hiệu ứng đi theo cọ (bọt, tia nước…) đọc `IWiper.Radius` để khớp vùng cọ phủ:
+  khoảng cách theo world từ đường đi của cọ tới mép ngoài nét lau.
 - Kéo bằng ngón tay: thêm `WiperDrag`.
   - Trong scene: cần một Collider2D trên vật và raycaster 2D trên camera.
   - Trong canvas: cần một Graphic bật Raycast Target.
