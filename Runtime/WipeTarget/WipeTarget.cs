@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using RiseOn.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -6,9 +6,8 @@ using UnityEngine.Events;
 
 namespace RiseOn.Wipe2D {
     /// <summary>
-    /// Shared spine of one wipeable renderer: owns the mask, swaps the renderer's material for the<br/>
-    /// masked one, and converts the wiper's world-space strokes into sprite pixels. Concrete targets<br/>
-    /// only say where their sprite is and how to reach their renderer.
+    /// Shared spine of one wipeable renderer: owns the mask, swaps the renderer's material for the masked one, and converts the wiper's world-space strokes into sprite pixels.<br/>
+    /// Concrete targets only say where their sprite is and how to reach their renderer.
     /// </summary>
     public abstract class WipeTarget : MonoBehaviour, IWipeTarget {
         private static readonly int maskTexId = Shader.PropertyToID("_MaskTex");
@@ -69,8 +68,8 @@ namespace RiseOn.Wipe2D {
         protected abstract Vector2 PixelToWorld(Vector2 pixel);
 
         /// <summary>
-        /// The mask hiding part of this renderer, as the sprite it draws plus how it cuts; false when<br/>
-        /// nothing masks it. A null sprite still clips by the mask's rect alone.
+        /// The mask hiding part of this renderer, as the sprite it draws plus how it cuts; false when nothing masks it.<br/>
+        /// A null sprite still clips by the mask's rect alone.
         /// </summary>
         protected abstract bool TryGetClip(out Sprite sprite, out float cutoff, out bool inside);
 
@@ -128,7 +127,7 @@ namespace RiseOn.Wipe2D {
             Release(this);
 
             static void Release(WipeTarget context) {
-                if (context.mask is null) return;
+                if (context.mask == null) return;
 
                 context.mask.OnVisibleRatioChanged -= context.RelayProgress;
                 context.mask.Release();
@@ -141,7 +140,7 @@ namespace RiseOn.Wipe2D {
         }
 
         protected virtual void LateUpdate() {
-            if (mask is null) return;
+            if (mask == null) return;
 
             if (fading) TickFade(this, Time.deltaTime);
 
@@ -200,7 +199,7 @@ namespace RiseOn.Wipe2D {
 
         [Button]
         protected virtual void SetupEditor() {
-            stampShader ??= Shader.Find(WipeMask.STAMP_SHADER);
+            stampShader ??= Shader.Find(WipeMask.StampShader);
             targetShader ??= Shader.Find(TargetShaderName);
         }
     }

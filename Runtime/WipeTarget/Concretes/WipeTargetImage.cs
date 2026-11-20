@@ -1,16 +1,16 @@
-using RiseOn.Utils;
+﻿using RiseOn.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace RiseOn.Wipe2D {
     /// <summary>
-    /// Makes a uGUI Image wipeable. Image Type must be Simple without Preserve Aspect: the mask maps<br/>
-    /// the whole rect onto the whole sprite, and Sliced/Tiled/Filled meshes use other UVs.
+    /// Makes a uGUI Image wipeable.<br/>
+    /// Image Type must be Simple without Preserve Aspect: the mask maps the whole rect onto the whole sprite, and Sliced/Tiled/Filled meshes use other UVs.
     /// </summary>
     public class WipeTargetImage : WipeTarget {
         // What the UI shaders clip at once a Mask turns UNITY_UI_ALPHACLIP on.
-        private const float UI_ALPHA_CLIP = .001f;
+        private const float UIAlphaClip = .001f;
 
         [SerializeField, Required]
         private Image target;
@@ -55,7 +55,7 @@ namespace RiseOn.Wipe2D {
             var graphic = mask != null ? mask.graphic as Image : null;
 
             sprite = graphic != null ? graphic.sprite : null;
-            cutoff = UI_ALPHA_CLIP;
+            cutoff = UIAlphaClip;
             inside = true;
 
             return mask != null && mask.MaskEnabled();

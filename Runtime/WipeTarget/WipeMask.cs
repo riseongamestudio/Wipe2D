@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
@@ -7,18 +7,17 @@ using Object = UnityEngine.Object;
 
 namespace RiseOn.Wipe2D {
     /// <summary>
-    /// The GPU side of one wipeable sprite: a single-channel mask the size of the sprite rect,<br/>
-    /// capsule strokes drawn into it with hardware min/max blending, and an asynchronous readback of<br/>
-    /// how much is still visible. Works in sprite pixels; owners convert from their own space.<br/>
+    /// The GPU side of one wipeable sprite: a single-channel mask the size of the sprite rect, capsule strokes drawn into it with hardware min/max blending, and an asynchronous readback of how much is still visible.<br/>
+    /// Works in sprite pixels; owners convert from their own space.<br/>
     /// The mask starts as the sprite's own alpha, so the ratio is measured against the opaque area.
     /// </summary>
     internal sealed class WipeMask {
-        internal const string STAMP_SHADER = "Hidden/RiseOn/Wipe2D/Stamp";
+        internal const string StampShader = "Hidden/RiseOn/Wipe2D/Stamp";
 
-        private const int ERASE_PASS = 0;
-        private const int REVEAL_PASS = 1;
-        private const int INIT_PASS = 2;
-        private const int FADE_PASS = 3;
+        private const int ErasePass = 0;
+        private const int RevealPass = 1;
+        private const int InitPass = 2;
+        private const int FadePass = 3;
 
         private static readonly int spriteTexId = Shader.PropertyToID("_SpriteTex");
         private static readonly int spriteRectId = Shader.PropertyToID("_SpriteRect");
@@ -36,8 +35,8 @@ namespace RiseOn.Wipe2D {
         // Pre-applying GL.GetGPUProjectionMatrix flips Y twice on D3D and every stroke lands mirrored.
         private static readonly Matrix4x4 projection = Matrix4x4.Ortho(0, 1, 0, 1, -1, 1);
 
-        // Unit quad is 0..1; this recentres it so TRS can rotate it about the segment midpoint.
-        private static readonly Matrix4x4 centreQuad = Matrix4x4.Translate(new Vector3(-.5f, -.5f, 0));
+        // Unit quad is 0..1; this recenters it so TRS can rotate it about the segment midpoint.
+        private static readonly Matrix4x4 centerQuad = Matrix4x4.Translate(new Vector3(-.5f, -.5f, 0));
 
         private static Mesh quad;
 
@@ -215,7 +214,7 @@ namespace RiseOn.Wipe2D {
             props.SetFloat(radiusId, r);
             props.SetFloat(hardnessId, hardness);
 
-            Draw(CapsuleMatrix(texelToUV, a, b, r), erase ? ERASE_PASS : REVEAL_PASS);
+            Draw(CapsuleMatrix(texelToUV, a, b, r), erase ? ErasePass : RevealPass);
 
             dirty = true;
 
@@ -227,7 +226,7 @@ namespace RiseOn.Wipe2D {
 
                 return texelToUV
                   * Matrix4x4.TRS((a + b) * .5f, Quaternion.Euler(0, 0, angle), new Vector3(len + 2 * r, 2 * r, 1))
-                  * centreQuad;
+                  * centerQuad;
             }
         }
 
@@ -238,7 +237,7 @@ namespace RiseOn.Wipe2D {
         public void Fade(bool visible, float delta) {
             props.SetVector(fadeId, new Vector4(visible ? 1 : 0, delta, 0, 0));
 
-            Draw(Matrix4x4.identity, FADE_PASS);
+            Draw(Matrix4x4.identity, FadePass);
 
             if (delta < 1) {
                 dirty = true;
@@ -293,7 +292,7 @@ namespace RiseOn.Wipe2D {
         private void DrawInit() {
             cmd.SetRenderTarget(texture);
             cmd.SetViewProjectionMatrices(Matrix4x4.identity, projection);
-            cmd.DrawMesh(Quad, Matrix4x4.identity, stampMaterial, 0, INIT_PASS);
+            cmd.DrawMesh(Quad, Matrix4x4.identity, stampMaterial, 0, InitPass);
         }
 
         private void OnReadback(AsyncGPUReadbackRequest request) {

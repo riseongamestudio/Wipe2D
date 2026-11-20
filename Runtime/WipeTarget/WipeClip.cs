@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RiseOn.Wipe2D {
     /// <summary>

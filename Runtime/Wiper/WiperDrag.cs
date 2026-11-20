@@ -1,4 +1,4 @@
-using RiseOn.Serializables;
+﻿using RiseOn.Serializables;
 using RiseOn.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 namespace RiseOn.Wipe2D {
     /// <summary>
     /// Drags the wiper with the pointer and feeds its position to <see cref="IWiper.Move"/>.<br/>
-    /// Works for a scene object (needs a Collider2D and a raycaster on the camera) and for a canvas<br/>
-    /// element (needs a raycast-target Graphic); the two differ only in how the pointer maps to world.<br/>
+    /// Works for a scene object (needs a Collider2D and a raycaster on the camera) and for a canvas element (needs a raycast-target Graphic); the two differ only in how the pointer maps to world.<br/>
     /// Single pointer: the finger that pressed first owns the drag until it lifts.
     /// </summary>
     public class WiperDrag

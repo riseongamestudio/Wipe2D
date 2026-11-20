@@ -1,4 +1,4 @@
-namespace RiseOn.Wipe2D {
+﻿namespace RiseOn.Wipe2D {
     public enum WipeInitState {
         /// <summary>Whole sprite shown, the natural start for <see cref="WipeMode.Erase"/>.</summary>
         Visible

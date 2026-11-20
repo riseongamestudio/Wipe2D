@@ -1,4 +1,4 @@
-namespace RiseOn.Wipe2D {
+﻿namespace RiseOn.Wipe2D {
     public enum WipeMode {
         /// <summary>Wherever the wiper passes, the sprite disappears.</summary>
         Erase

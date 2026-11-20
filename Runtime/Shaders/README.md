@@ -36,13 +36,13 @@ trị cuối cùng.
 
 Quad đặt trong không gian UV của mask, với view identity và projection
 `Matrix4x4.Ortho(0,1,0,1,-1,1)` **theo quy ước Unity**.
-`CommandBuffer.SetViewProjectionMatrices` tự đổi sang quy ước của API đồ hoạ; nếu áp
+`CommandBuffer.SetViewProjectionMatrices` tự đổi sang quy ước của API đồ họa; nếu áp
 `GL.GetGPUProjectionMatrix(..., true)` trước thì Y bị lật hai lần trên D3D và mọi dấu
 cọ rơi vào vị trí đối xứng qua giữa sprite. Đã dính đúng lỗi này, phát hiện bằng test
 render qua camera.
 
 Init cũng đi qua đúng quad và projection này thay vì `Blit`, để ba đường init, erase,
-reveal cùng một hệ toạ độ **theo cấu trúc**: đổi projection ở một chỗ là cả ba đổi
+reveal cùng một hệ tọa độ **theo cấu trúc**: đổi projection ở một chỗ là cả ba đổi
 theo.
 
 ## Erase và Reveal dùng blend của phần cứng

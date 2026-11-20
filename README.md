@@ -1,6 +1,6 @@
 # RiseOn.Wipe2D
 
-Lau sprite bằng cọ: `WipeMode.Erase` xoá tới đâu mất tới đó, `WipeMode.Reveal` lau
+Lau sprite bằng cọ: `WipeMode.Erase` xóa tới đâu mất tới đó, `WipeMode.Reveal` lau
 tới đâu sprite về nguyên bản tới đó. Không vẽ màu. Chạy cho SpriteRenderer trong
 scene và cho Image trong canvas, cùng một wiper, có đo tiến độ và tự hoàn tất khi
 gần xong.
@@ -23,15 +23,15 @@ Package `com.riseon.wipe2d`, namespace `RiseOn.Wipe2D`.
 | Phụ thuộc | Cách có | Dùng cho |
 |---|---|---|
 | Unity 6000.3 | | Bản đang dùng để phát triển |
-| [`com.riseon.utils`](https://github.com/riseongamestudio/Utils/tree/main/Core#readme) 1.0.1 | Tự cài theo `package.json` | Undo, extension |
-| [`com.riseon.serializables`](https://github.com/riseongamestudio/Serializables#readme) 1.0.1 | Tự cài theo `package.json` | Tham chiếu target qua interface |
+| [Odin Inspector](https://odininspector.com) | Cài tay từ Asset Store | Inspector của các component |
+| [`com.riseon.utils`](https://github.com/riseongamestudio/Utils/tree/main/Core#readme) 1.0.18 | Tự cài theo `package.json` | Undo, extension |
+| [`com.riseon.serializables`](https://github.com/riseongamestudio/Serializables#readme) 1.0.5 | Tự cài theo `package.json` | Tham chiếu target qua interface |
 | `com.unity.ugui` 2.0.0 | Tự cài theo `package.json` | `WipeTargetImage`, `WiperDrag` trong canvas |
 | `com.unity.render-pipelines.universal` 17.3.0 | Tự cài theo `package.json` | Shader của `WipeTargetSprite` (URP 2D) |
-| [Odin Inspector](https://odininspector.com) | Cài tay từ Asset Store | Inspector của các component |
 
-"Tự cài" là khi cài qua registry; cài bằng git URL thì phải cài các package RiseOn
-kia trước. Odin không có trên UPM nên phải cài vào project trước.
-Thiếu Odin thì project báo một lỗi từ `RiseOn.Wipe2D.Requirements`.
+"Tự cài" là Package Manager tự lấy theo version từ Unity Registry và các registry khai
+trong manifest, cả khi cài pack bằng git URL. Odin không có trên UPM nên phải cài vào
+project trước. Thiếu Odin thì project báo một lỗi từ `RiseOn.Wipe2D.Requirements`.
 
 ## Cài đặt
 
@@ -48,16 +48,17 @@ Thiếu Odin thì project báo một lỗi từ `RiseOn.Wipe2D.Requirements`.
     }
   ],
   "dependencies": {
-    "com.riseon.wipe2d": "1.1.1"
+    "com.riseon.wipe2d": "1.1.2"
   }
 }
 ```
 
-**Git URL**: cài `com.riseon.utils` và `com.riseon.serializables` trước, rồi
-*Package Manager → + → Add package from git URL*:
+**Git URL**: phụ thuộc vẫn lấy theo version từ registry: `com.riseon.utils` và
+`com.riseon.serializables` lấy từ registry RiseOn như ví dụ trên, hoặc cài bằng git URL
+trước theo thứ tự này. Rồi *Package Manager → + → Add package from git URL*:
 
 ```
-https://github.com/riseongamestudio/Wipe2D.git#v1.1.0
+https://github.com/riseongamestudio/Wipe2D.git
 ```
 
 **Thư mục local**: `"com.riseon.wipe2d": "file:D:/path/to/Wipe2D"`.
@@ -80,7 +81,7 @@ target khác. Mọi thứ còn lại là `internal`.
 1. Trên sprite cần lau: thêm `WipeTargetSprite` (SpriteRenderer) hoặc
    `WipeTargetImage` (Image, Type = Simple, không Preserve Aspect). Không cần
    collider, không cần bật Read/Write cho texture.
-2. Chọn *Init State*: `Visible` nếu sẽ bị xoá, `Hidden` nếu sẽ được lộ ra.
+2. Chọn *Init State*: `Visible` nếu sẽ bị xóa, `Hidden` nếu sẽ được lộ ra.
 3. Trên vật cầm cọ (một GameObject riêng): thêm `Wiper` và
    `WipeTargetProviderRef`, kéo các target vào provider.
 4. Muốn kéo bằng ngón tay thì thêm `WiperDrag`. Trong scene nó cần một Collider2D
@@ -101,8 +102,10 @@ nhóm *Mask* của target (xem [WipeTarget](Runtime/WipeTarget/README.md#mask)).
 
 Không lớp public nào `sealed`. Ba đường:
 
-- **Renderer kiểu khác**: kế thừa `WipeTarget` ([chi tiết](Runtime/WipeTarget/README.md#mở-rộng)).
-- **Cách chọn target khác**: kế thừa `WipeTargetProvider` ([chi tiết](Runtime/Provider/README.md)).
+- **Renderer kiểu khác**: kế thừa `WipeTarget` ([chi
+  tiết](Runtime/WipeTarget/README.md#mở-rộng)).
+- **Cách chọn target khác**: kế thừa `WipeTargetProvider` ([chi
+  tiết](Runtime/Provider/README.md)).
 - **Chỉnh một lớp có sẵn**: các điểm móc để `virtual` gồm `Wiper.Move` / `EndMove` /
   `OnDisable`, `WiperDrag.PointerToWorld`, `WipeTarget.Clear` / `Stroke` / `Awake` /
   `OnDestroy` / `LateUpdate`, và `SetupEditor` ở mọi component.

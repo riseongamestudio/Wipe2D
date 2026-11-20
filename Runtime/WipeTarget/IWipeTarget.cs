@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace RiseOn.Wipe2D {
     /// <summary>
-    /// Anything a <see cref="Wiper"/> can wipe. Positions are world space: a wiper and its targets<br/>
-    /// share one space whether they live in the scene or inside a canvas.
+    /// Anything a <see cref="Wiper"/> can wipe.<br/>
+    /// Positions are world space: a wiper and its targets share one space whether they live in the scene or inside a canvas.
     /// </summary>
     public interface IWipeTarget {
         /// <summary>0 in the initial state, 1 once fully wiped the other way; reads 0 to 1 for both modes. Updated asynchronously.</summary>

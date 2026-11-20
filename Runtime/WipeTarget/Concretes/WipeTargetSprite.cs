@@ -1,12 +1,12 @@
-using RiseOn.Utils;
+﻿using RiseOn.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace RiseOn.Wipe2D {
     /// <summary>
-    /// Makes a SpriteRenderer wipeable. No collider needed: wipers reach it by reference.<br/>
-    /// The sprite texture needs no Read/Write flag; atlas sub-rects and flipX/flipY are handled;<br/>
-    /// non-uniform scale is approximated using the X axis.
+    /// Makes a SpriteRenderer wipeable.<br/>
+    /// No collider needed: wipers reach it by reference.<br/>
+    /// The sprite texture needs no Read/Write flag; atlas sub-rects and flipX/flipY are handled; non-uniform scale is approximated using the X axis.
     /// </summary>
     public class WipeTargetSprite : WipeTarget {
         [SerializeField, Required]

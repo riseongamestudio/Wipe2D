@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RiseOn.Wipe2D {
     /// <summary>
-    /// The brush as its drivers see it. Whoever owns the input, a drag script, an animation, an AI,<br/>
-    /// only needs to say where the brush is and when it lifts.
+    /// The brush as its drivers see it.<br/>
+    /// Whoever owns the input, a drag script, an animation, an AI, only needs to say where the brush is and when it lifts.
     /// </summary>
     public interface IWiper {
         /// <summary>Brush center moved here; call every frame while the brush is down.</summary>

@@ -2,7 +2,7 @@
 
 [← RiseOn.Wipe2D](../../README.md)
 
-Thứ bị lau. `WipeTarget` là phần chung: giữ mask, đổi toạ độ world sang pixel qua
+Thứ bị lau. `WipeTarget` là phần chung: giữ mask, đổi tọa độ world sang pixel qua
 các hook trừu tượng, đổi tỉ lệ nhìn thấy thành `Progress`.
 `Concretes/WipeTargetSprite` và `Concretes/WipeTargetImage` chỉ điền các hook đó.
 `WipeMask` (internal) là mask R8: đóng dấu capsule, đọc lại tỉ lệ còn nhìn thấy; nó
@@ -19,7 +19,7 @@ làm việc bằng pixel của sprite, không biết renderer là gì.
 ## Tiến độ
 
 `Progress` là 0 ở trạng thái ban đầu và 1 khi đã lau hết theo chiều ngược lại. Nó
-suy từ *Init State*, nên target bị xoá lẫn target được lộ ra đều đọc 0 → 1 mà không
+suy từ *Init State*, nên target bị xóa lẫn target được lộ ra đều đọc 0 → 1 mà không
 cần biết wiper đang ở chế độ nào. Cập nhật bất đồng bộ qua `OnProgressChanged`, trễ
 vài frame: đừng dùng `Progress` cho logic cần tức thời trong cùng frame.
 
@@ -80,7 +80,7 @@ Giới hạn:
 - Scale không đồng nhất chỉ được xấp xỉ theo trục X khi đổi bán kính cọ.
 - Mask dựng một lần trong `Awake` theo sprite lúc đó. Đổi sprite lúc chạy thì mask
   không tự khớp; hiện chưa có hàm dựng lại.
-- Toạ độ là world ở mọi nơi. Trong canvas, wiper và image cùng cây nên
+- Tọa độ là world ở mọi nơi. Trong canvas, wiper và image cùng cây nên
   `InverseTransformPoint` vẫn ra đúng local của rect ở mọi render mode.
 
 ## Material

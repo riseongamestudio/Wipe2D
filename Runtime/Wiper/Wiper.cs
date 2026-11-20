@@ -1,13 +1,13 @@
-using RiseOn.Serializables;
+﻿using RiseOn.Serializables;
 using RiseOn.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace RiseOn.Wipe2D {
     /// <summary>
-    /// The brush. Holds the mode and the shape, and strokes every selected target from one world<br/>
-    /// point to the next. No hit test: a stroke that misses a target is culled by that target for free,<br/>
-    /// so targets need no collider and the wiper needs no raycast.
+    /// The brush.<br/>
+    /// Holds the mode and the shape, and strokes every selected target from one world point to the next.<br/>
+    /// No hit test: a stroke that misses a target is culled by that target for free, so targets need no collider and the wiper needs no raycast.
     /// </summary>
     public class Wiper : MonoBehaviour, IWiper {
         [SerializeField]
