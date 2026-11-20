@@ -4,6 +4,13 @@ Mọi thay đổi đáng kể của `com.riseon.wipe2d` được ghi ở đây. 
 [Keep a Changelog](https://keepachangelog.com/vi/1.1.0/), đánh số theo
 [Semantic Versioning](https://semver.org/lang/vi/).
 
+## [1.1.1] - 2026-11-20
+
+### Đổi
+
+- Inspector của `WipeTarget` vẽ các nhóm field bằng `[SectionGroup]` của `com.riseon.utils`, cùng
+  thanh và khung với trang settings của mọi pack RiseOn. Cần `com.riseon.utils` 1.0.15.
+
 ## [1.1.0] - 2026-10-29
 
 ### Thêm

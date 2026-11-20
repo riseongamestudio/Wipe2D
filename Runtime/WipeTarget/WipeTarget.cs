@@ -14,30 +14,30 @@ namespace RiseOn.Wipe2D {
         private static readonly int maskTexId = Shader.PropertyToID("_MaskTex");
         private static readonly int maskStId = Shader.PropertyToID("_MaskST");
 
-        [SerializeField, Required, FoldoutGroup("References")]
+        [SerializeField, Required, SectionGroup("References")]
         private Shader stampShader;
 
-        [SerializeField, Required, FoldoutGroup("References")]
+        [SerializeField, Required, SectionGroup("References")]
         private Shader targetShader;
 
-        [SerializeField, FoldoutGroup("Threshold"), PropertyRange(0, 1)]
+        [SerializeField, SectionGroup("Threshold", Foldable = true), PropertyRange(0, 1)]
         private float progressThreshold = .85f;
 
         // Reaching the threshold fades whatever is left to the state opposite the initial one over this long,
         // then the component retires.
-        [SerializeField, FoldoutGroup("Threshold"), MinValue(0)]
+        [SerializeField, SectionGroup("Threshold"), MinValue(0)]
         private float fadeDuration = .25f;
 
-        [SerializeField, FoldoutGroup("Threshold")]
+        [SerializeField, SectionGroup("Threshold")]
         private UnityEvent onProgressThresholdReached;
 
-        [SerializeField, FoldoutGroup("Optimization"), MinValue(0)]
+        [SerializeField, SectionGroup("Optimization", Foldable = true, Closed = true), MinValue(0)]
         private int maxMaskSize;
 
-        [SerializeField, FoldoutGroup("Optimization"), MinValue(0)]
+        [SerializeField, SectionGroup("Optimization"), MinValue(0)]
         private float readbackInterval = .1f;
 
-        [SerializeField, FoldoutGroup("Optimization"), PropertyRange(0, 5)]
+        [SerializeField, SectionGroup("Optimization"), PropertyRange(0, 5)]
         private int readbackMipOffset = 3;
 
         // The target only knows how it starts; which way it gets wiped is the Wiper's mode.

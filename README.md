@@ -48,7 +48,7 @@ Thiếu Odin thì project báo một lỗi từ `RiseOn.Wipe2D.Requirements`.
     }
   ],
   "dependencies": {
-    "com.riseon.wipe2d": "1.1.0"
+    "com.riseon.wipe2d": "1.1.1"
   }
 }
 ```
